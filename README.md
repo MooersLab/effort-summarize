@@ -81,7 +81,7 @@ make test                         # runs the test suite
 ## Database Schema
 
 Both scripts query a table called **`zTimeSpent`** in a SQLite database.
-The expected columns are:
+The used columns are:
 
 | Column             | Type  | Description                          |
 |---|---|---|
@@ -92,6 +92,24 @@ The expected columns are:
 
 Rows with empty or `NULL` values for `ProjectID` are automatically excluded
 from the reports.
+The SQL command to create **`zTimeSpent`** in a SQLite database.
+
+```sql
+CREATE TABLE "zTimeSpent" (
+  "id" INTEGER NOT NULL,
+  "DateDashed" Date,
+  "Start" TIME,
+  "End" TIME,
+  "TimeClock" TIME GENERATED ALWAYS AS (strftime('%H:%M', CAST((julianday("End") - julianday("Start")) AS REAL), '12:00')) VIRTUAL,
+  "TimeHr" TIME GENERATED ALWAYS AS (ROUND((julianday("End") - julianday("Start")) * 24, 2)) VIRTUAL,
+  "ProjectID" INT,
+  "ProjectDirectory" TEXT,
+  "Description" TEXT,
+  "Activity" TEXT DEFAULT none,
+  PRIMARY KEY("id")
+)
+```
+
 
 ---
 
@@ -299,8 +317,8 @@ shared `conftest.py` fixtures) covers:
 make coverage
 ```
 
-This runs the tests under `coverage`, then prints a line-by-line coverage
-summary.
+This runs the tests under `coverage`, then prints a line-by-line coverage.
+
 
 ### HTML report
 
