@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/static/v1?label=effort-summary&message=0.2&color=brightcolor)
+![Version](https://img.shields.io/static/v1?label=effort-summary&message=0.1.0&color=brightcolor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -265,7 +265,7 @@ The test suite (`test_weeklySummary.py`, `test_monthSummary.py`, and the
 shared `conftest.py` fixtures) covers:
 
 - **Category configuration** — validates that ranges do not overlap, that
-  `CATEGORY_NAMES` is properly deduplicated, and that both scripts define
+  `CATEGORY_NAMES` is properly deduplicated, and both scripts define
   identical categories.
 - **`category_for()`** — parametrised tests for every category boundary,
   every Lab Related / Private sub-range boundary, and edge cases (empty
@@ -286,7 +286,7 @@ shared `conftest.py` fixtures) covers:
 - **`main()` (monthly)** — tests for full month names, abbreviations, partial
   names, numeric input, case insensitivity, default values (pressing Enter),
   leap year / non-leap-year February handling, invalid month names, and full
-  integration with sample data including Lab Related and Uncategorized
+  integration with sample data, including Lab Related and Uncategorized
   subtotals.
 
 ---
@@ -325,21 +325,25 @@ open in a browser.
 
 ---
 
-## 
+## Status
+
+- Works as advertised.
+- Passes all tests.
+- 99% coverage.
 
 ## License
 
 MIT licnense. These scripts are provided for personal use.  Modify and distribute as needed.
 
 
-** Update table
+## Update table
 
 
 | Version | Changes                                                                                                                | Date              |
 |:---------|:------------------------------------------------------------------------------------------------------------------------|:-------------------|
 |   0.1.0   | Initiate project. Added badges, funding, and this update table.                                                        | 2026 March 8 |
 
-** Sources of funding
+## Sources of funding
 
 - NIH: R01 CA242845
 - NIH: R01 AI088011
